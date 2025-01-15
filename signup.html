@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(45deg, #1a1a1a, #4a4a4a);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 2rem;
+        }
+
+        .main-container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-section {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .image-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0,0,0,0.4), rgba(0,0,0,0.1));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .image-text {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .image-subtext {
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            opacity: 0;
+            transform: translateY(30px);
+            max-width: 400px;
+        }
+
+        .signup-container {
+            flex: 1;
+            padding: 2.5rem;
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+            opacity: 0;
+            transform: translateX(30px);
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            color: #9ca3af;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            padding-left: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+            transform: scale(1.01);
+        }
+
+        .error {
+            color: #ff4444;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        input.error-input {
+            border-color: #ff4444;
+        }
+
+        input.error-input + .error {
+            display: block;
+        }
+
+        button {
+            width: 100%;
+            padding: 1rem;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .social-signup {
+            margin-top: 2rem;
+            text-align: center;
+            opacity: 0;
+        }
+
+        .social-signup p {
+            margin-bottom: 1rem;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .social-button {
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .social-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 968px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .image-section {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .signup-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="image-section">
+            <img src="1.jpg" alt="Sign Up">
+            <div class="image-overlay">
+                <h2 class="image-text">Join Our Community</h2>
+                <p class="image-subtext">Create an account and start your journey with us today. Access exclusive features and connect with others.</p>
+            </div>
+        </div>
+        <div class="signup-container">
+            <h1>Create Account</h1>
+            <form id="signup-form" novalidate>
+                <div class="form-group">
+                    <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                    <input type="text" id="name" placeholder="Full Name" required>
+                    <span class="error">Please enter your name</span>
+                </div>
+
+                <div class="form-group">
+                    <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <input type="email" id="email" placeholder="Email Address" required>
+                    <span class="error">Please enter a valid email address</span>
+                </div>
+
+                <div class="form-group">
+                    <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                    <input type="password" id="password" placeholder="Password" required>
+                    <span class="error">Password must be at least 8 characters</span>
+                </div>
+
+                <div class="form-group">
+                    <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                    <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+                    <span class="error">Passwords do not match</span>
+                </div>
+
+                <button type="submit">Sign Up</button>
+            </form>
+
+            <div class="social-signup">
+                <p>Or sign up with</p>
+                <!-- Social Buttons -->
+<div class="social-buttons">
+    <div class="social-button">
+        <i class="fab fa-google"></i>
+    </div>
+    <div class="social-button">
+        <i class="fab fa-facebook"></i>
+    </div>
+    <div class="social-button">
+        <i class="fab fa-twitter"></i>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Animation on page load
+        window.addEventListener('load', () => {
+            // Animate image section
+            gsap.to('.image-section', {
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                ease: 'power3.out'
+            });
+
+            // Animate image overlay text
+            gsap.to('.image-text, .image-subtext', {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                delay: 0.5,
+                stagger: 0.2,
+                ease: 'power3.out'
+            });
+
+            // Animate signup container
+            gsap.to('.signup-container', {
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                delay: 0.3,
+                ease: 'power3.out'
+            });
+
+            // Animate form groups
+            gsap.to('.form-group', {
+                opacity: 1,
+                x: 0,
+                duration: 0.8,
+                stagger: 0.2,
+                delay: 0.8,
+                ease: 'power3.out'
+            });
+
+            // Animate button
+            gsap.to('button', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                delay: 1.6,
+                ease: 'power3.out'
+            });
+
+            // Animate social signup
+            gsap.to('.social-signup', {
+                opacity: 1,
+                duration: 0.8,
+                delay: 1.8,
+                ease: 'power3.out'
+            });
+        });
+
+        // Form validation and submission
+        document.getElementById('signup-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            let isValid = true;
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirm-password');
+
+            // Basic validation
+            if (!name.value) {
+                name.classList.add('error-input');
+                isValid = false;
+            } else {
+                name.classList.remove('error-input');
+            }
+
+            if (!email.value || !email.value.includes('@')) {
+                email.classList.add('error-input');
+                isValid = false;
+            } else {
+                email.classList.remove('error-input');
+            }
+
+            if (!password.value || password.value.length < 8) {
+                password.classList.add('error-input');
+                isValid = false;
+            } else {
+                password.classList.remove('error-input');
+            }
+
+            if (password.value !== confirmPassword.value) {
+                confirmPassword.classList.add('error-input');
+                isValid = false;
+            } else {
+                confirmPassword.classList.remove('error-input');
+            }
+
+            if (isValid) {
+                gsap.to('button', {
+                    scale: 0.95,
+                    duration: 0.1,
+                    yoyo: true,
+                    repeat: 1,
+                    onComplete: () => {
+                        // Success animation
+                        gsap.to('.main-container', {
+                            scale: 1.02,
+                            duration: 0.3,
+                            yoyo: true,
+                            repeat: 1
+                        });
+                        setTimeout(() => {
+                            alert('Sign up successful!');
+                            e.target.reset();
+                        }, 500);
+                    }
+                });
+            }
+        });
+
+        // Input focus animations
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                gsap.to(input, {
+                    scale: 1.01,
+                    duration: 0.3
+                });
+            });
+
+            input.addEventListener('blur', () => {
+                gsap.to(input, {
+                    scale: 1,
+                    duration: 0.3
+                });
+            });
+        });
+    </script>
+</body>
+</html>
