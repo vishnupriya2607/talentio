@@ -19,8 +19,6 @@
             color: white;
             overflow-x: hidden;
         }
-
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -81,8 +79,6 @@
             background: #45a049;
             transform: translateY(-2px);
         }
-
-        /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
@@ -109,8 +105,6 @@
             margin-bottom: 2rem;
             color: rgba(255, 255, 255, 0.8);
         }
-
-        /* Features Section */
         .features {
             padding: 6rem 2rem;
             background: rgba(255, 255, 255, 0.1);
@@ -143,8 +137,6 @@
             font-size: 2.5rem;
             color: #4CAF50;
         }
-
-        /* About Section */
         .about {
             padding: 6rem 2rem;
             background: rgba(0, 0, 0, 0.2);
@@ -179,7 +171,6 @@
             border-radius: 15px;
         }
 
-        /* CTA Section */
         .cta {
             padding: 6rem 2rem;
             text-align: center;
@@ -204,8 +195,6 @@
             justify-content: center;
             margin-top: 2rem;
         }
-
-        /* Footer */
         footer {
             padding: 4rem 2rem;
             background: rgba(0, 0, 0, 0.3);
@@ -251,7 +240,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-content">
             <div class="logo">Digital Solutions</div>
@@ -264,7 +252,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>Transform Your Digital Presence</h1>
@@ -275,8 +262,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Features Section -->
     <section class="features" id="features">
         <div class="features-grid">
             <div class="feature-card">
@@ -296,8 +281,6 @@
             </div>
         </div>
     </section>
-
-    <!-- About Section -->
     <section class="about" id="about">
         <div class="about-content">
             <div class="about-text">
@@ -311,8 +294,6 @@
             </div>
         </div>
     </section>
-
-    <!-- CTA Section -->
     <section class="cta">
         <div class="cta-content">
             <h2>Ready to Get Started?</h2>
@@ -324,7 +305,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="social-links">
@@ -338,17 +318,14 @@
     </footer>
 
     <script>
-        // Register ScrollTrigger plugin
         gsap.registerPlugin(ScrollTrigger);
 
-        // Navigation animation
         gsap.to('nav', {
             y: 0,
             duration: 1,
             ease: 'power3.out'
         });
 
-        // Hero section animation
         gsap.to('.hero-content', {
             opacity: 1,
             y: 0,
@@ -356,8 +333,6 @@
             delay: 0.5,
             ease: 'power3.out'
         });
-
-        // Feature cards animation
         gsap.to('.feature-card', {
             scrollTrigger: {
                 trigger: '.features',
@@ -369,8 +344,6 @@
             stagger: 0.2,
             ease: 'power3.out'
         });
-
-        // About section animation
         gsap.to('.about-text', {
             scrollTrigger: {
                 trigger: '.about',
@@ -393,8 +366,6 @@
             delay: 0.3,
             ease: 'power3.out'
         });
-
-        // CTA section animation
         gsap.to('.cta-content', {
             scrollTrigger: {
                 trigger: '.cta',
@@ -406,7 +377,6 @@
             ease: 'power3.out'
         });
 
-        // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();

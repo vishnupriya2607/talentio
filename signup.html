@@ -262,7 +262,6 @@
 
             <div class="social-signup">
                 <p>Or sign up with</p>
-                <!-- Social Buttons -->
 <div class="social-buttons">
     <div class="social-button">
         <i class="fab fa-google"></i>
@@ -279,17 +278,13 @@
     </div>
 
     <script>
-        // Animation on page load
         window.addEventListener('load', () => {
-            // Animate image section
             gsap.to('.image-section', {
                 opacity: 1,
                 x: 0,
                 duration: 1,
                 ease: 'power3.out'
             });
-
-            // Animate image overlay text
             gsap.to('.image-text, .image-subtext', {
                 opacity: 1,
                 y: 0,
@@ -298,8 +293,6 @@
                 stagger: 0.2,
                 ease: 'power3.out'
             });
-
-            // Animate signup container
             gsap.to('.signup-container', {
                 opacity: 1,
                 x: 0,
@@ -307,8 +300,6 @@
                 delay: 0.3,
                 ease: 'power3.out'
             });
-
-            // Animate form groups
             gsap.to('.form-group', {
                 opacity: 1,
                 x: 0,
@@ -317,8 +308,6 @@
                 delay: 0.8,
                 ease: 'power3.out'
             });
-
-            // Animate button
             gsap.to('button', {
                 opacity: 1,
                 y: 0,
@@ -326,8 +315,6 @@
                 delay: 1.6,
                 ease: 'power3.out'
             });
-
-            // Animate social signup
             gsap.to('.social-signup', {
                 opacity: 1,
                 duration: 0.8,
@@ -336,7 +323,6 @@
             });
         });
 
-        // Form validation and submission
         document.getElementById('signup-form').addEventListener('submit', (e) => {
             e.preventDefault();
             let isValid = true;
@@ -345,7 +331,6 @@
             const password = document.getElementById('password');
             const confirmPassword = document.getElementById('confirm-password');
 
-            // Basic validation
             if (!name.value) {
                 name.classList.add('error-input');
                 isValid = false;
@@ -381,7 +366,6 @@
                     yoyo: true,
                     repeat: 1,
                     onComplete: () => {
-                        // Success animation
                         gsap.to('.main-container', {
                             scale: 1.02,
                             duration: 0.3,
@@ -396,8 +380,6 @@
                 });
             }
         });
-
-        // Input focus animations
         const inputs = document.querySelectorAll('input');
         inputs.forEach(input => {
             input.addEventListener('focus', () => {

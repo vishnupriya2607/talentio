@@ -26,7 +26,7 @@
 
         .main-container {
             height: 95vh;
-    min-height: 400px; /* Ensures minimum size */
+    min-height: 400px; 
     display: flex;
     width: 100%;
     max-width: 1200px;
@@ -35,7 +35,7 @@
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    padding: 1rem; /* Reduce padding to save space */
+    padding: 1rem; 
 }
 
 
@@ -231,9 +231,7 @@
     </div>
 
     <script>
-        // Animation on page load
         window.addEventListener('load', () => {
-            // Animate image section
             gsap.to('.image-section', {
                 opacity: 1,
                 x: 0,
@@ -241,7 +239,6 @@
                 ease: 'power3.out'
             });
 
-            // Animate image overlay text
             gsap.to('.image-text, .image-subtext', {
                 opacity: 1,
                 y: 0,
@@ -250,8 +247,6 @@
                 stagger: 0.2,
                 ease: 'power3.out'
             });
-
-            // Animate contact container
             gsap.to('.contact-container', {
                 opacity: 1,
                 x: 0,
@@ -260,7 +255,6 @@
                 ease: 'power3.out'
             });
 
-            // Animate form groups
             gsap.to('.form-group', {
                 opacity: 1,
                 x: 0,
@@ -269,8 +263,6 @@
                 delay: 0.8,
                 ease: 'power3.out'
             });
-
-            // Animate button
             gsap.to('button', {
                 opacity: 1,
                 y: 0,
@@ -279,7 +271,6 @@
                 ease: 'power3.out'
             });
 
-            // Animate contact info
             gsap.to('.contact-info', {
                 opacity: 1,
                 duration: 0.8,
@@ -287,8 +278,6 @@
                 ease: 'power3.out'
             });
         });
-
-        // Form submission animation
         document.getElementById('contactForm').addEventListener('submit', (e) => {
             e.preventDefault();
             
@@ -298,15 +287,12 @@
                 yoyo: true,
                 repeat: 1
             });
-
-            // Reset form after animation
             setTimeout(() => {
                 e.target.reset();
                 alert('Message sent successfully!');
             }, 500);
         });
 
-        // Input focus animations
         const inputs = document.querySelectorAll('input, textarea');
         inputs.forEach(input => {
             input.addEventListener('focus', () => {
